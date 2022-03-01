@@ -1,6 +1,6 @@
-![highway-wasm](./docs/preview.png)
+![highwayhash-wasm](./docs/preview.png)
 
-# highway-wasm
+# highwayhash-wasm
 
 [![npm version][npm-version-src]][npm-href]
 [![npm downloads][npm-downloads-src]][npm-href]
@@ -22,17 +22,17 @@
 
 ## Install
 
-Add `highway-wasm` dependency to your project:
+Add `highwayhash-wasm` dependency to your project:
 
 ```shell
 # using npm
-npm i highway-wasm
+npm i highwayhash-wasm
 
 # using yarn
-yarn add highway-wasm
+yarn add highwayhash-wasm
 
 # using pnpm
-pnpm add highway-wasm
+pnpm add highwayhash-wasm
 ```
 
 ## Usage
@@ -41,8 +41,8 @@ Use this method to generate hashes is the length of the data is not known in adv
 
 ```javascript
 // import the library using esm or cjs syntax
-import { useHighway } from 'highway-wasm'
-const { useHighway } = require('highway-wasm')
+import { useHighwayHash } from 'highwayhash-wasm'
+const { useHighwayHash } = require('highwayhash-wasm')
 
 // Some 32 byte key
 const key = new Uint8Array(32).fill(8)
@@ -50,7 +50,7 @@ const key = new Uint8Array(32).fill(8)
 const data = Uint8Array.from([0])
 
 // Load the wasm module which returns the the Highway object
-const highway = await useHighway({
+const highway = await useHighwayHash({
   // Optional: pass a key and keep it hidden from attackers to ensure
   // unpredictability, and attackers can't mount a DoS attack
   key: key,
@@ -133,10 +133,10 @@ const hash = hasher.hash64(key, data).toBigUint64Array()
 
 
 <!-- badges -->
-[npm-version-src]: https://badgen.net/npm/v/highway-wasm
-[npm-href]: https://www.npmjs.com/package/highway-wasm
-[npm-downloads-src]: https://badgen.net/npm/dm/highway-wasm
-[github-actions-ci-src]: https://github.com/asonnleitner/highway-wasm/actions/workflows/ci.yaml/badge.svg
-[github-actions-ci-href]: https://github.com/asonnleitner/highway-wasm/actions/workflows/ci.yaml
+[npm-version-src]: https://badgen.net/npm/v/highwayhash-wasm
+[npm-href]: https://www.npmjs.com/package/highwayhash-wasm
+[npm-downloads-src]: https://badgen.net/npm/dm/highwayhash-wasm
+[github-actions-ci-src]: https://github.com/asonnleitner/highwayhash-wasm/actions/workflows/ci.yaml/badge.svg
+[github-actions-ci-href]: https://github.com/asonnleitner/highwayhash-wasm/actions/workflows/ci.yaml
 
-[license-src]: https://badgen.net/npm/license/highway-wasm
+[license-src]: https://badgen.net/npm/license/highwayhash-wasm

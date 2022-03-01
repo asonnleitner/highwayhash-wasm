@@ -22,8 +22,8 @@ function build() {
 }
 
 function main() {
-  build "highway" "${ROOT_DIR}/js/highway-wasm/lib/highway"
-  RUSTFLAGS="-C target-feature=+simd128" build "highway-simd" "${ROOT_DIR}/js/highway-wasm/lib/highway-simd"
+  build "highwayhash" "${ROOT_DIR}/js/highwayhash-wasm/lib/highwayhash"
+  RUSTFLAGS="-C target-feature=+simd128" build "highwayhash-simd" "${ROOT_DIR}/js/highwayhash-wasm/lib/highwayhash-simd"
 }
 
 main "$@"

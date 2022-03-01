@@ -1,9 +1,11 @@
-import init, { WasmHighway as Highway } from '../lib/highway/highway.js'
-import { default as WASM } from '../lib/highway/highway_bg.wasm'
+import init, {
+  WasmHighwayHash as HighwayHash
+} from '../lib/highwayhash/highwayhash'
+import { default as WASM } from '../lib/highwayhash/highwayhash_bg.wasm'
 import initSimd, {
-  WasmHighway as HighwaySimd
-} from '../lib/highway-simd/highway-simd'
-import { default as simdWASM } from '../lib/highway-simd/highway-simd_bg.wasm'
+  WasmHighwayHash as HighwayHashSimd
+} from '../lib/highwayhash-simd/highwayhash-simd'
+import { default as simdWASM } from '../lib/highwayhash-simd/highwayhash-simd_bg.wasm'
 
 // https://github.com/GoogleChromeLabs/wasm-feature-detect/blob/master/src/detectors/simd/module.wat
 export const useSimd = () =>
@@ -14,7 +16,7 @@ export const useSimd = () =>
     ])
   )
 
-const useModule = (hasher: typeof Highway) => (key: Uint8Array) => {
+const useModule = (hasher: typeof HighwayHash) => (key: Uint8Array) => {
   if (key.length && key.length !== 32) throw new Error('Key must be 32 bytes')
 
   return {
@@ -43,7 +45,7 @@ interface HighwayOptions {
   simd?: boolean
 }
 
-export const useHighway = async (options?: HighwayOptions) => {
+export const useHighwayHash = async (options?: HighwayOptions) => {
   const simd =
     useSimd() && options && options.simd !== undefined
       ? Boolean(options.simd)
@@ -51,7 +53,7 @@ export const useHighway = async (options?: HighwayOptions) => {
 
   console.log({ simd })
   simd ? await initSimd(simdWASM) : await init(WASM)
-  return useModule(simd ? HighwaySimd : Highway)(
+  return useModule(simd ? HighwayHashSimd : HighwayHash)(
     options && options.key ? options.key : Uint8Array.from({ length: 32 })
   )
 }

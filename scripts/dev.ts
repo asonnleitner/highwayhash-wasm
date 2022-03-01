@@ -5,13 +5,13 @@ import wasmLoader from './wasm-loader'
 import { resolve } from 'path'
 import { WasmPackOptions } from 'esbuild-plugin-wasm-pack/dist/options'
 
-const outfile = resolve(__dirname, '../js/highway-wasm/dist/index.js')
+const outfile = resolve(__dirname, '../js/highwayhash-wasm/dist/index.js')
 
 const wasmPackage = (outName: string, options: WasmPackOptions) => {
   return wasmPack({
     path: resolve(__dirname, '../highway'),
     outName: outName,
-    outDir: `../js/highway-wasm/lib/${outName}`,
+    outDir: `../js/highwayhash-wasm/lib/${outName}`,
     target: 'web',
     profile: 'release',
     noTypescript: false,

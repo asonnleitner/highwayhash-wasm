@@ -6,7 +6,7 @@ import { resolve } from 'path'
 import minimist from 'minimist'
 
 const args = minimist(process.argv.slice(2))
-const target = args._[0] || 'highway-wasm'
+const target = args._[0] || 'highwayhash-wasm'
 const format = args.f || args.format || 'global'
 import pkg from '../package.json'
 
@@ -22,13 +22,13 @@ const outfile = resolve(__dirname, `../dist/${target}.${format}.js`)
 
 const build = async () => {
   await esbuild.build({
-    entryPoints: [resolve(__dirname, '../js/highway-wasm/src/index.ts')],
+    entryPoints: [resolve(__dirname, '../js/highwayhash-wasm/src/index.ts')],
     outfile,
     bundle: true,
     minify: true,
     sourcemap: false,
     format: outputFormat,
-    globalName: 'WasmHighway',
+    globalName: 'WasmHighwayHash',
     platform: format === 'cjs' ? 'node' : 'browser',
     plugins: [
       wasmLoader(),

@@ -108,12 +108,12 @@ impl Hash {
 }
 
 #[wasm_bindgen]
-pub struct WasmHighway {
+pub struct WasmHighwayHash {
     hasher: HighwayHasher,
 }
 
 #[wasm_bindgen]
-impl WasmHighway {
+impl WasmHighwayHash {
     fn hasher(key: &[u8]) -> HighwayHasher {
         // console_error_panic_hook::set_once();
         return HighwayHasher::new(if key.is_empty() {
@@ -124,7 +124,7 @@ impl WasmHighway {
     }
 
     pub fn new(key: &[u8]) -> Self {
-        WasmHighway {
+        WasmHighwayHash {
             hasher: Self::hasher(key),
         }
     }

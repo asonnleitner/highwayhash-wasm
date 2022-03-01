@@ -3,8 +3,8 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT_DIR="$(dirname "$DIR")"
 
-HIGHWAY_WASM="${ROOT_DIR}/js/highway-wasm/lib/highway/highway_bg.wasm"
-HIGHWAY_SIMD_WASM="${ROOT_DIR}/js/highway-wasm/lib/highway-simd/highway-simd_bg.wasm"
+HIGHWAY_WASM="${ROOT_DIR}/js/highwayhash-wasm/lib/highwayhash/highwayhash_bg.wasm"
+HIGHWAY_SIMD_WASM="${ROOT_DIR}/js/highwayhash-wasm/lib/highwayhash-simd/highwayhash-simd_bg.wasm"
 
 #if ! command -v wasm-opt >/dev/null 2>&1; then
 #  echo "wasm-opt is not installed"

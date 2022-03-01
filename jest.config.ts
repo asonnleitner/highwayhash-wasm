@@ -20,7 +20,7 @@ const config: InitialOptionsTsJest = {
   // transform: {
   //   '^.+\\.(ts|js)x?$': 'ts-jest'
   // },
-  // transformIgnorePatterns: ['js/highway-wasm/lib/(?!(highway|highway-simd))']
+  // transformIgnorePatterns: ['js/highwayhash-wasm/lib/(?!(highway|highway-simd))']
 }
 
 export default config

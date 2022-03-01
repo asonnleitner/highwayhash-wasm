@@ -1,6 +1,6 @@
 module.exports = {
   branches: 'master',
-  repositoryUrl: 'https://github.com/asonnleitner/highway-wasm',
+  repositoryUrl: 'https://github.com/asonnleitner/highwayhash-wasm',
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
@@ -16,7 +16,7 @@ module.exports = {
       {
         assets: [
           {
-            path: 'highway-wasm/dist.tar.gz',
+            path: 'highwayhash-wasm/dist.tar.gz',
             label: 'dist'
           }
         ]

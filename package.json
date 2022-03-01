@@ -1,18 +1,18 @@
 {
-  "name": "highway-wasm",
+  "name": "highwayhash-wasm",
   "version": "1.2.3",
   "description": "HighwayHash WASM bindings for browser and node environments",
   "author": "Andreas Sonnleitner <asonnleitner@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com:asonnleitner/highway-wasm.git"
+    "url": "git://github.com:asonnleitner/highwayhash-wasm.git"
   },
-  "main": "dist/highway-wasm.cjs.js",
-  "module": "dist/highway-wasm.esm.js",
-  "unpkg": "dist/highway-wasm.global.js",
-  "jsdelivr": "dist/highway-wasm.global.js",
-  "types": "dist/highway-wasm.d.ts",
+  "main": "dist/highwayhash-wasm.cjs.js",
+  "module": "dist/highwayhash-wasm.esm.js",
+  "unpkg": "dist/highwayhash-wasm.global.js",
+  "jsdelivr": "dist/highwayhash-wasm.global.js",
+  "types": "dist/highwayhash-wasm.d.ts",
   "files": [
     "dist"
   ],
@@ -25,11 +25,11 @@
     "build": "pnpm clean && pnpm optimized-build:wasm && pnpm build:js && pnpm make-types",
     "make-types": "api-extractor run --local --verbose",
     "build:js": "pnpm build:esm && pnpm build:cjs && pnpm build:global",
-    "build:esm": "ts-node scripts/build.ts highway-wasm -f esm",
-    "build:cjs": "ts-node scripts/build.ts highway-wasm -f cjs",
-    "build:global": "ts-node scripts/build.ts highway-wasm -f global",
+    "build:esm": "ts-node scripts/build.ts highwayhash-wasm -f esm",
+    "build:cjs": "ts-node scripts/build.ts highwayhash-wasm -f cjs",
+    "build:global": "ts-node scripts/build.ts highwayhash-wasm -f global",
     "optimized-build:wasm": "scripts/build && scripts/optimize",
-    "clean": "rm -rf dist/* && rm -rf js/highway-wasm/lib/*",
+    "clean": "rm -rf dist/* && rm -rf js/highwayhash-wasm/lib/*",
     "prepare": "husky install"
   },
   "lint-staged": {

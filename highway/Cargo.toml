@@ -1,9 +1,9 @@
 [package]
-name = "highway"
+name = "highwayhash"
 version = "0.1.0"
 authors = ["asonnleitner <andreassonnleitner@gmail.com>"]
 description = "A wasm game of life implementation"
-repository = "https://github.com/asonnleitner/highway-wasm"
+repository = "https://github.com/asonnleitner/highwayhash-wasm"
 license = "MIT"
 edition = "2021"
 

@@ -1,5 +1,5 @@
 // import the library
-import { useHighway } from 'highway-wasm'
+import { useHighwayHash } from 'highwayhash-wasm'
 
 // Load the wasm module
 const main = async () => {
@@ -9,7 +9,7 @@ const main = async () => {
   const data = Uint8Array.from([0])
 
   // Load the wasm module which returns the the Highway object
-  const highway = await useHighway({
+  const highway = await useHighwayHash({
     // Optional: pass a key and keep it hidden from attackers to ensure
     // unpredictability, and attackers can't mount a DoS attack
     key: key,
