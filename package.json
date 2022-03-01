@@ -30,7 +30,6 @@
     "build:global": "ts-node scripts/build.ts highway-wasm -f global",
     "optimized-build:wasm": "scripts/build && scripts/optimize",
     "clean": "rm -rf dist/* && rm -rf js/highway-wasm/lib/*",
-    "preinstall": "ts-node scripts/preinstall.ts",
     "prepare": "husky install"
   },
   "lint-staged": {
