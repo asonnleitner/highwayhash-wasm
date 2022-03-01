@@ -38,6 +38,8 @@ export declare class Highway {
 
 export declare type InitOptions = Record<'simd', boolean>
 
+export declare function simd(): boolean
+
 /**
  */
 declare class WasmHighway {
