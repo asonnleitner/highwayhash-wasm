@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/asonnleitner/highway-wasm/compare/v1.1.0...v1.1.1) (2022-03-01)
+
+
+### Bug Fixes
+
+* npm-href [skip ci] ([6f67c91](https://github.com/asonnleitner/highway-wasm/commit/6f67c91b9c7a8fd1232408e71f5f53fc075f3285))
+
 # [1.1.0](https://github.com/asonnleitner/highway-wasm/compare/v1.0.0...v1.1.0) (2022-03-01)
 
 
