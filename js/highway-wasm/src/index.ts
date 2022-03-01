@@ -16,6 +16,7 @@ export const simd = () =>
     ])
   )
 
+
 export class Highway {
   static async init(options = { simd: true }) {
     const useSimd = simd() && options.simd
