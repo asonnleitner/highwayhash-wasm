@@ -47,7 +47,6 @@ jobs:
 
 
       - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: |
-          pnpm add -D @semantic-release/changelog @semantic-release/npm @semantic-release/git
-          pnpx semantic-release
+        run: pnpx semantic-release
+
 
