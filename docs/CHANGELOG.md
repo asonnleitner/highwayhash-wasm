@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/asonnleitner/highway-wasm/compare/v1.2.0...v1.2.1) (2022-03-01)
+
+
+### Bug Fixes
+
+* browser support ([db823b8](https://github.com/asonnleitner/highway-wasm/commit/db823b820293b31641b63e62de97756d816f28eb))
+
 # [1.2.0](https://github.com/asonnleitner/highway-wasm/compare/v1.1.2...v1.2.0) (2022-03-01)
 
 
