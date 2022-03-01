@@ -52,6 +52,6 @@ export const useHighway = async (options?: HighwayOptions) => {
   console.log({ simd })
   simd ? await initSimd(simdWASM) : await init(WASM)
   return useModule(simd ? HighwaySimd : Highway)(
-    options?.key ?? Uint8Array.from({ length: 32 })
+    options && options.key ? options.key : Uint8Array.from({ length: 32 })
   )
 }
