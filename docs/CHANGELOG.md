@@ -1,3 +1,21 @@
+# [1.2.0](https://github.com/asonnleitner/highway-wasm/compare/v1.1.2...v1.2.0) (2022-03-01)
+
+
+### Bug Fixes
+
+* .d.ts ([6778e06](https://github.com/asonnleitner/highway-wasm/commit/6778e060720b73232339ff29e31421abd236be71))
+* build ([e608759](https://github.com/asonnleitner/highway-wasm/commit/e608759c8f52b27a1130a3b48ad693482bb7bea4))
+* **ci:** release ([a35a1fe](https://github.com/asonnleitner/highway-wasm/commit/a35a1fe26acfd50023063fe250575c2efe7e210c))
+* **ci:** release ([c277a18](https://github.com/asonnleitner/highway-wasm/commit/c277a1858b4e202ac98a2a64e677555fda3d6c16))
+* engines ([5cfe89c](https://github.com/asonnleitner/highway-wasm/commit/5cfe89c9422ae2a50e276b3b34720e4a242ceb20))
+* pnpm ci ([a0424f7](https://github.com/asonnleitner/highway-wasm/commit/a0424f721cfbb4d8dfe8c744a2fdfaef2dc742d6))
+
+
+### Features
+
+* better module ([1f85e16](https://github.com/asonnleitner/highway-wasm/commit/1f85e16872fcbc40f25c1c46cf12c66fdaf17e7f))
+* new highway api ([2a16c8c](https://github.com/asonnleitner/highway-wasm/commit/2a16c8c8e99792d7ed39acb7a8e8c4b392144645))
+
 ## [1.1.2](https://github.com/asonnleitner/highway-wasm/compare/v1.1.1...v1.1.2) (2022-03-01)
 
 
