@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/asonnleitner/highway-wasm/compare/v1.2.2...v1.2.3) (2022-03-01)
+
+
+### Bug Fixes
+
+* toBigUint64Array api fix ([6263b0d](https://github.com/asonnleitner/highway-wasm/commit/6263b0db604de64250e5fb2673f57fb663125111))
+
 ## [1.2.2](https://github.com/asonnleitner/highway-wasm/compare/v1.2.1...v1.2.2) (2022-03-01)
 
 

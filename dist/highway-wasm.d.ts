@@ -29,7 +29,7 @@ declare class Hash {
     /**
      * @returns {BigUint64Array}
      */
-    toUint64Array(): BigUint64Array;
+    toBigUint64Array(): BigUint64Array;
 }
 
 declare interface HighwayOptions {
