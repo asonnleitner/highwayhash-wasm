@@ -2,10 +2,13 @@
 
 # highwayhash-wasm
 
-[![npm version][npm-version-src]][npm-href]
-[![npm downloads][npm-downloads-src]][npm-href]
-[![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
-[![License][license-src]][npm-href]
+[//]: # ([![npm version][npm-version-src]][npm-href])
+
+[//]: # ([![npm downloads][npm-downloads-src]][npm-href])
+
+[//]: # ([![Github Actions CI][github-actions-ci-src]][github-actions-ci-href])
+
+[//]: # ([![License][license-src]][npm-href])
 
 > JS bindings for browser and Node.js environment of the Rust implementation of HighwayHash, Google's fast, keyed, portable 
 > (output is hardware independent) and secure hash function.
