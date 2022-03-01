@@ -21,7 +21,7 @@ const outfile = resolve(__dirname, `../dist/${target}.${format}.js`)
 
 const build = async () => {
   await esbuild.build({
-    entryPoints: [resolve(__dirname, '../js/highway-wasm/index.ts')],
+    entryPoints: [resolve(__dirname, '../js/highway-wasm/src/index.ts')],
     outfile,
     bundle: true,
     minify: true,

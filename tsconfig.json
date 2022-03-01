@@ -2,14 +2,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "outDir": "dist",
     "importHelpers": true,
     "sourceMap": true,
     "skipLibCheck": true,
     "useDefineForClassFields": false,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "allowJs": false,
+    "allowJs": true,
     "strict": true,
     "noUnusedLocals": true,
     "experimentalDecorators": true,
@@ -25,8 +25,7 @@
     ],
     "rootDir": ".",
     "paths": {
-      "lib/*": ["lib/*"],
-      "highway-wasm": ["js/highway-wasm"]
+      "highway-wasm": ["js/highway-wasm/src"]
     }
   },
   "include": [

@@ -1,5 +1,5 @@
 [package]
-name = "highway-wasm"
+name = "highway"
 version = "0.1.0"
 authors = ["asonnleitner <andreassonnleitner@gmail.com>"]
 description = "A wasm game of life implementation"
