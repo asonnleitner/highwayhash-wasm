@@ -23,7 +23,7 @@ const build = async () => {
   await esbuild.build({
     entryPoints: [resolve(__dirname, '../js/index.ts')],
     bundle: true,
-    minify: false,
+    minify: true,
     sourcemap: true,
     outfile,
     plugins: [
