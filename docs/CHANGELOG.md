@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/asonnleitner/highway-wasm/compare/v1.2.3...v1.2.4) (2022-03-01)
+
+
+### Bug Fixes
+
+* readme [skip ci] ([196aa16](https://github.com/asonnleitner/highway-wasm/commit/196aa1691f3b863931b6b700bd34cc30d21cffb9))
+
 ## [1.2.3](https://github.com/asonnleitner/highway-wasm/compare/v1.2.2...v1.2.3) (2022-03-01)
 
 

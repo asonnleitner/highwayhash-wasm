@@ -1,6 +1,6 @@
 {
   "name": "highwayhash-wasm",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "HighwayHash WASM bindings for browser and node environments",
   "author": "Andreas Sonnleitner <asonnleitner@gmail.com>",
   "license": "MIT",
