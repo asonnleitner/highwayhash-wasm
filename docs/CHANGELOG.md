@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/asonnleitner/highwayhash-wasm/compare/v1.2.4...v1.2.5) (2022-03-01)
+
+
+### Bug Fixes
+
+* module name highwayhasher ([4abe1c5](https://github.com/asonnleitner/highwayhash-wasm/commit/4abe1c5f746b9fbf6a53156a22d14f97d9f2c037))
+
 ## [1.2.4](https://github.com/asonnleitner/highway-wasm/compare/v1.2.3...v1.2.4) (2022-03-01)
 
 
