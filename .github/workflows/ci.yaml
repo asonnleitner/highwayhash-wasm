@@ -23,7 +23,7 @@ jobs:
       - run: echo "::set-output name=node-version::$(<package.json jq -r '.engines.node' | sed 's/[^0-9.]*//g')"
         id: node
 
-      - run: echo "::set-output name=pnpm-version::$(<package.json jq -r '.engines.pnpm' | sed 's/[^0-9.]*//g')"
+      - run: echo "::set-output name=pnpm-version::$(<package.json jq -r '.pnpm.version' | sed 's/[^0-9.]*//g')"
         id: pnpm
 
       - uses: pnpm/action-setup@v2.0.1

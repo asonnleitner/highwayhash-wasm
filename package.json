@@ -39,6 +39,9 @@
   "engines": {
     "node": ">=16.14.0"
   },
+  "pnpm": {
+    "version": ">=6.32.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
