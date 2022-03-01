@@ -123,7 +123,7 @@ const hash = hasher.hash64(key, data).toBytes()
 const hash = hasher.hash64(key, data).toUint32Array()
 // Uint32Array(1) [65]
 ```
-### `toUint64Array`
+### `toBigUint64Array`
 ```javascript
 // returns the hash as a Uint64Array
 const hash = hasher.hash64(key, data).toBigUint64Array()
