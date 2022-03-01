@@ -101,7 +101,7 @@ impl Hash {
         bytes
     }
 
-    #[wasm_bindgen(js_name = toUint64Array)]
+    #[wasm_bindgen(js_name = toBigUint64Array)]
     pub fn to_u64_bytes(self) -> Vec<u64> {
         self.hash.clone()
     }

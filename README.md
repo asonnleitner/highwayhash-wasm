@@ -91,36 +91,43 @@ The following methods are available to output hashes:
 ```javascript
 // returns the hash as a string
 const hash = hasher.hash64(key, data).toString()
+// 4652207699671410156
 ```
 ### `toHex`
 ```javascript
 // returns the hash as a hexadecimal string
 const hash = hasher.hash64(key, data).toHex()
+// 408FF641204065EC
 ```
 ### `toBinary`
 ```javascript
 // returns the hash as a binary string
 const hash = hasher.hash64(key, data).toBinary()
+// 100000010001111111101100100000100100000010000000110010111101100
 ```
 ### `toOctal`
 ```javascript
 // returns the hash as an octal string
 const hash = hasher.hash64(key, data).toOctal()
+// 402177544044020062754
 ```
 ### `toBytes`
 ```javascript
 // returns the hash as a Uint8Array
 const hash = hasher.hash64(key, data).toBytes()
+// Uint8Array(8) [236, 101, 64, 32, 65, 246, 143, 64]
 ```
 ### `toUint32Array`
 ```javascript
 // returns the hash as a Uint32Array
 const hash = hasher.hash64(key, data).toUint32Array()
+// Uint32Array(1) [65]
 ```
 ### `toUint64Array`
 ```javascript
 // returns the hash as a Uint64Array
-const hash = hasher.hash64(key, data).toUint64Array()
+const hash = hasher.hash64(key, data).toBigUint64Array()
+// BigUint64Array(1) [4652207699671410156n]
 ```
 
 
