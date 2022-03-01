@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/asonnleitner/highway-wasm/compare/v1.1.1...v1.1.2) (2022-03-01)
+
+
+### Bug Fixes
+
+* preinstall ([2f29ef4](https://github.com/asonnleitner/highway-wasm/commit/2f29ef453d3c306f896292bf67daf558f328edf1))
+
 ## [1.1.1](https://github.com/asonnleitner/highway-wasm/compare/v1.1.0...v1.1.1) (2022-03-01)
 
 
