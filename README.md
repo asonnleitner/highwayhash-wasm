@@ -130,7 +130,7 @@ const hash = hasher.hash64(key, data).toUint64Array()
 
 <!-- badges -->
 [npm-version-src]: https://badgen.net/npm/v/highway-wasm
-[npm-href]: https://www.npmjs.com/package/highwayhash
+[npm-href]: https://www.npmjs.com/package/highway-wasm
 [npm-downloads-src]: https://badgen.net/npm/dm/highway-wasm
 [github-actions-ci-src]: https://github.com/asonnleitner/highway-wasm/actions/workflows/ci.yaml/badge.svg
 [github-actions-ci-href]: https://github.com/asonnleitner/highway-wasm/actions/workflows/ci.yaml
