@@ -41,43 +41,40 @@ Use this method to generate hashes is the length of the data is not known in adv
 
 ```javascript
 // import the library using esm or cjs syntax
-import { Highway } from 'highway-wasm'
-const { Highway } = require('highway-wasm')
+import { useHighway } from 'highway-wasm'
+const { useHighway } = require('highway-wasm')
 
-// create a key which should be hidden from attackers to ensure unpredictability
+// Some 32 byte key
 const key = new Uint8Array(32).fill(8)
-
-// initialize the WASM module and create a new hasher
-const hasher = await Highway.init().then((hh) => hh.new(key))
-
-// append some data
-hasher.append(Uint8Array.from([0]))
-
-// after all data has been appended, hash it to a 64, 128 or 256 bit output,
-// don't forget to chain the finalized hash to the required output format.
-const hash = hasher.finalize64().toString()
-// example: '4652207699671410156'
-```
-
-The preferred way to use the library is to initiate the module and hash data and key with 
-the `hash64`, `hash128` or `hash256` methods.
-
-```javascript
-// import the library using esm or cjs syntax
-import { Highway } from 'highway-wasm'
-const { Highway } = require('highway-wasm')
-
-// create a key which should be hidden from attackers to ensure unpredictability
-const key = new Uint8Array(32).fill(8)
+// Some data to hash
 const data = Uint8Array.from([0])
 
-// initialize the WASM module and create a new hasher
-const hasher = await Highway.init()
+// Load the wasm module which returns the the Highway object
+const highway = await useHighway({
+  // Optional: pass a key and keep it hidden from attackers to ensure
+  // unpredictability, and attackers can't mount a DoS attack
+  key: key,
+  // Optional: use SIMD for faster encryption, enabled by default
+  simd: true
+})
 
-// after all data has been appended, hash it to a 64, 128 or 256 bit output,
-// don't forget to chain the finalized hash to the required output format.
-const hash = hasher.hash64(key, data).toString()
-// example: '4652207699671410156'
+// 1. method - encrypt data with Highway and return the hash
+const h1 = highway.hash64(data).toString()
+console.log(h1) // 4652207699671410156
+
+// 2. method - if the data to hash is not known, create a hasher, and append
+// the data.
+const hasher = highway.new(key)
+hasher.append(data)
+// After all data is appended, call the hash method to get the hash
+// do not call any additional methods on the hasher after finalizing
+const h2 = hasher.finalize64().toString()
+console.log(h2) // 4652207699671410156
+
+// 3. method - hash the data with separate key and data
+const h3 = highway.hasher.hash64(key, data).toString()
+console.log(h3) // 4652207699671410156
+
 ```
 
 ## API

@@ -1,40 +1,40 @@
 // import the library
-import { Highway, HighwayModule } from 'highway-wasm'
+import { useHighway } from 'highway-wasm'
 
 // Load the wasm module
 const main = async () => {
+  // Some 32 byte key
   const key = new Uint8Array(32).fill(8)
+  // Some data to hash
   const data = Uint8Array.from([0])
 
-  // initialize the WASM module and create a new hasher
-  const highway = await Highway.init()
-
-  const HH = HighwayModule(key)
-
-  const h2 = HH.hash64(data).toString()
-  const h3 = HH.hash64(data).toString()
-  console.log({
-    h2,
-    h3
+  // Load the wasm module which returns the the Highway object
+  const highway = await useHighway({
+    // Optional: pass a key and keep it hidden from attackers to ensure
+    // unpredictability, and attackers can't mount a DoS attack
+    key: key,
+    // Optional: use SIMD for faster encryption, enabled by default
+    simd: true
   })
 
-  // console.log({ highway })
+  // 1. method - encrypt data with Highway and return the hash
+  const h1 = highway.hash64(data).toString()
+  console.log(h1) // 4652207699671410156
 
-  // console.log({
-  //   HighwayModule: HighwayModule(key)
-  // })
+  // 2. method - if the data to hash is not known, create a hasher, and append
+  // the data.
+  const hasher = highway.new(key)
+  hasher.append(data)
+  // After all data is appended, call the hash method to get the hash
+  // do not call any additional methods on the hasher after finalizing
+  const h2 = hasher.finalize64().toString()
+  console.log(h2) // 4652207699671410156
 
-  const builder = highway.new([])
-  builder.append(data)
-  const built = builder.finalize64().toString()
-  console.log({ built })
+  // 3. method - hash the data with separate key and data
+  const h3 = highway.hasher.hash64(key, data).toString()
+  console.log(h3) // 4652207699671410156
 
-  // after all data has been appended, hash it to a 64, 128 or 256 bit output,
-  // don't forget to chain the finalized hash to the required output format.
-  const hash = highway.hash64(key, data).toString()
-  // example: '4652207699671410156'
-
-  console.log({ hash })
+  console.log({ h1, h2, h3 })
 }
 
 main().catch((err) => {

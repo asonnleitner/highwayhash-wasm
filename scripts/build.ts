@@ -1,6 +1,7 @@
 // @ts-nocheck
 import esbuild from 'esbuild'
 import wasmLoader from './wasm-loader'
+import replace from './esbuild-replace'
 import { resolve } from 'path'
 import minimist from 'minimist'
 
@@ -24,12 +25,17 @@ const build = async () => {
     entryPoints: [resolve(__dirname, '../js/highway-wasm/src/index.ts')],
     outfile,
     bundle: true,
-    minify: true,
+    // minify: true,
     sourcemap: false,
     format: outputFormat,
     globalName: 'WasmHighway',
     platform: format === 'cjs' ? 'node' : 'browser',
-    plugins: [wasmLoader()],
+    plugins: [
+      wasmLoader(),
+      replace({
+        'import.meta.url': 'input'
+      })
+    ],
     define: {
       __VERSION__: `"${pkg.version}"`,
       __BROWSER__: String(format !== 'cjs'),

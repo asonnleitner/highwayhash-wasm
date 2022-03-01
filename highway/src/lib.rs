@@ -115,7 +115,7 @@ pub struct WasmHighway {
 #[wasm_bindgen]
 impl WasmHighway {
     fn hasher(key: &[u8]) -> HighwayHasher {
-        console_error_panic_hook::set_once();
+        // console_error_panic_hook::set_once();
         return HighwayHasher::new(if key.is_empty() {
             Key::default()
         } else {
@@ -129,18 +129,11 @@ impl WasmHighway {
         }
     }
 
-    // Recommended method for hashing
-    pub fn hash64(key: &[u8], data: &[u8]) -> Hash {
-        Hash { hash: [Self::hasher(key).hash64(data)].to_vec() }
-    }
+    pub fn hash64(key: &[u8], data: &[u8]) -> Hash { Hash { hash: [Self::hasher(key).hash64(data)].to_vec() } }
 
-    pub fn hash128(key: &[u8], data: &[u8]) -> Hash {
-        Hash { hash: Self::hasher(key).hash128(data).to_vec() }
-    }
+    pub fn hash128(key: &[u8], data: &[u8]) -> Hash { Hash { hash: Self::hasher(key).hash128(data).to_vec() } }
 
-    pub fn hash256(key: &[u8], data: &[u8]) -> Hash {
-        Hash { hash: Self::hasher(key).hash256(data).to_vec() }
-    }
+    pub fn hash256(key: &[u8], data: &[u8]) -> Hash { Hash { hash: Self::hasher(key).hash256(data).to_vec() } }
 
     pub fn append(&mut self, data: &[u8]) {
         self.hasher.append(data);
