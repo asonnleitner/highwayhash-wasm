@@ -44,7 +44,12 @@ interface HighwayOptions {
 }
 
 export const useHighway = async (options?: HighwayOptions) => {
-  const simd = useSimd() && (options?.simd ?? true)
+  const simd =
+    useSimd() && options && options.simd !== undefined
+      ? Boolean(options.simd)
+      : true
+
+  console.log({ simd })
   simd ? await initSimd(simdWASM) : await init(WASM)
   return useModule(simd ? HighwaySimd : Highway)(
     options?.key ?? Uint8Array.from({ length: 32 })

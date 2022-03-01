@@ -25,7 +25,7 @@ const build = async () => {
     entryPoints: [resolve(__dirname, '../js/highway-wasm/src/index.ts')],
     outfile,
     bundle: true,
-    // minify: true,
+    minify: true,
     sourcemap: false,
     format: outputFormat,
     globalName: 'WasmHighway',
