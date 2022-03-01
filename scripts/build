@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(dirname "$DIR")"
+
+HIGHWAY="${ROOT_DIR}/highway"
+
+if ! command -v wasm-pack >/dev/null 2>&1; then
+  echo "wasm-pack is not installed"
+  exit 1
+fi
+
+function build() {
+  local out_name="$1"
+  local out_dir="$2"
+  wasm-pack build "$HIGHWAY" \
+    --out-name "$out_name" \
+    --target web \
+    --out-dir "$out_dir" \
+    --release
+#    --no-typescript \
+}
+
+function main() {
+  build "highway" "${ROOT_DIR}/js/highway-wasm/lib/highway"
+  RUSTFLAGS="-C target-feature=+simd128" build "highway-simd" "${ROOT_DIR}/js/highway-wasm/lib/highway-simd"
+}
+
+main "$@"

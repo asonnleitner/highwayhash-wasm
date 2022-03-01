@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "esnext",
+    "outDir": "dist",
+    "importHelpers": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "useDefineForClassFields": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
+    "types": ["jest", "puppeteer", "node"],
+    "declaration": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "rootDir": ".",
+    "paths": {
+      "lib/*": ["lib/*"],
+      "highway-wasm": ["js/highway-wasm"]
+    }
+  },
+  "include": [
+    "js/**/*.ts",
+    "js/*/__tests__",
+    "test-dts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/__tests__"
+  ]
+}

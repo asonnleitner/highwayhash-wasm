@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "watch": "nodemon --watch 'src/**/*' -e rs --exec 'wasm-pack build --out-dir ../js/highway-wasm'"
+  }
+}

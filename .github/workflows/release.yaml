@@ -1,0 +1,53 @@
+name: release
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  release:
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - run: echo "::set-output name=node-version::$(<package.json jq -r '.engines.node' | sed 's/[^0-9.]*//g')"
+        id: node
+
+      - run: echo "::set-output name=pnpm-version::$(<package.json jq -r '.engines.pnpm' | sed 's/[^0-9.]*//g')"
+        id: pnpm
+
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: ${{ steps.pnpm.outputs.pnpm-version }}
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.node.outputs.node-version }}
+          check-latest: false
+          cache: pnpm
+
+      - run: pnpm install
+      - run: pnpm lint
+      - run: pnpm build
+
+      - if: github.event_name == 'push'
+        run: tar cf - ./dist | gzip --best > dist.tar.gz
+
+      - if: github.event_name == 'push'
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: ./dist.tar.gz
+
+
+      - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          pnpm add -D @semantic-release/changelog @semantic-release/npm @semantic-release/git
+          pnpx semantic-release
+
