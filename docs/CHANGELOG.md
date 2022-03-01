@@ -1,3 +1,11 @@
+## [1.2.6](https://github.com/asonnleitner/highwayhash-wasm/compare/v1.2.5...v1.2.6) (2022-03-01)
+
+
+### Bug Fixes
+
+* badges back ([f87d84c](https://github.com/asonnleitner/highwayhash-wasm/commit/f87d84c4f52f5bb7c542453882d55d59c0e270c6))
+* readme badges ([64b01d6](https://github.com/asonnleitner/highwayhash-wasm/commit/64b01d6cdd594019e053e52f245bda37acadbf30))
+
 ## [1.2.5](https://github.com/asonnleitner/highwayhash-wasm/compare/v1.2.4...v1.2.5) (2022-03-01)
 
 
