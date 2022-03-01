@@ -109,24 +109,23 @@ impl Hash {
 
 #[wasm_bindgen]
 pub struct WasmHighway {
-    hasher: Option<HighwayHasher>,
+    hasher: HighwayHasher,
 }
 
 #[wasm_bindgen]
 impl WasmHighway {
     fn hasher(key: &[u8]) -> HighwayHasher {
-        return HighwayHasher::new(Key(to_lanes(key)));
+        console_error_panic_hook::set_once();
+        return HighwayHasher::new(if key.is_empty() {
+            Key::default()
+        } else {
+            Key(to_lanes(key))
+        });
     }
 
     pub fn new(key: &[u8]) -> Self {
         WasmHighway {
-            hasher: Option::from(Self::hasher(key)),
-        }
-    }
-
-    pub fn default() -> Self {
-        WasmHighway {
-            hasher: Option::from(Self::hasher(&[0])),
+            hasher: Self::hasher(key),
         }
     }
 
@@ -144,18 +143,18 @@ impl WasmHighway {
     }
 
     pub fn append(&mut self, data: &[u8]) {
-        self.hasher.as_mut().unwrap().append(data);
+        self.hasher.append(data);
     }
 
     pub fn finalize64(self) -> Hash {
-        Hash { hash: [self.hasher.unwrap().finalize64()].to_vec() }
+        Hash { hash: [self.hasher.finalize64()].to_vec() }
     }
 
     pub fn finalize128(self) -> Hash {
-        Hash { hash: self.hasher.unwrap().finalize128().to_vec() }
+        Hash { hash: self.hasher.finalize128().to_vec() }
     }
 
     pub fn finalize256(self) -> Hash {
-        Hash { hash: self.hasher.unwrap().finalize256().to_vec() }
+        Hash { hash: self.hasher.finalize256().to_vec() }
     }
 }

@@ -50,10 +50,6 @@ declare class WasmHighway {
      */
     static new(key: Uint8Array): WasmHighway;
     /**
-     * @returns {WasmHighway}
-     */
-    static default(): WasmHighway;
-    /**
      * @param {Uint8Array} key
      * @param {Uint8Array} data
      * @returns {Hash}

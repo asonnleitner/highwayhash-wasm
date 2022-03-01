@@ -16,6 +16,34 @@ export const simd = () =>
     ])
   )
 
+type HighwayHasherModule = typeof WasmHighway
+
+export const useModule =
+  (hasher: HighwayHasherModule) =>
+  (key = Uint8Array.from({ length: 32 })) => {
+    if (key.length && key.length !== 32) throw new Error('Key must be 32 bytes')
+
+    return {
+      hasher,
+      hash64: (data: Uint8Array) => {
+        const hh = hasher.new(key)
+        hh.append(data)
+        return hh.finalize64()
+      },
+      hash128: (data: Uint8Array) => {
+        const hh = hasher.new(key)
+        hh.append(data)
+        return hh.finalize128()
+      },
+      hash256: (data: Uint8Array) => {
+        const hh = hasher.new(key)
+        hh.append(data)
+        return hh.finalize256()
+      }
+    }
+  }
+
+export const HighwayModule = useModule(WasmHighwaySimd)
 
 export class Highway {
   static async init(options = { simd: true }) {
