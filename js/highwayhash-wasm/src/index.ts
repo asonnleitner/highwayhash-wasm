@@ -51,7 +51,6 @@ export const useHighwayHash = async (options?: HighwayOptions) => {
       ? Boolean(options.simd)
       : true
 
-  console.log({ simd })
   simd ? await initSimd(simdWASM) : await init(WASM)
   return useModule(simd ? HighwayHashSimd : HighwayHash)(
     options && options.key ? options.key : Uint8Array.from({ length: 32 })
