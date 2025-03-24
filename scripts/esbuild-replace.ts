@@ -1,33 +1,39 @@
-// @ts-nocheck
-import { Plugin } from 'esbuild'
-import fs from 'fs'
+import type { Plugin } from 'esbuild'
+import fs from 'node:fs'
 import MagicString from 'magic-string'
 
-const toFunction = (code: string) =>
-  typeof code === 'function' ? code : () => code
+interface ReplaceOptions {
+  include?: RegExp
+  exclude?: RegExp
+  delimiters?: [string, string]
+  values?: Record<string, string | ((...args: any[]) => string)>
+  [key: string]: unknown
+}
 
-const escape = (s: string) => s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
-const longest = (a: string, b: string) => b.length - a.length
+type ReplacementFunction = (id: string) => string
+type ReplacementValues = Record<string, ReplacementFunction>
 
-const mapToFunctions = (options): Record<string, Function> => {
-  // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
-  const { delimiters, include, exclude, ...values } = options.values
-    ? options.values
-    : options
+function toFunction(code: unknown): ReplacementFunction {
+  return typeof code === 'function' ? code as ReplacementFunction : () => String(code)
+}
+
+const escape = (s: string): string => s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
+const longest = (a: string, b: string): number => b.length - a.length
+
+function mapToFunctions(options: ReplaceOptions): ReplacementValues {
+  const { delimiters, include, exclude, ...values } = options.values ? options.values : options
 
   return Object.keys(values).reduce((fns, key) => {
     const functions = Object.assign({}, fns)
     functions[key] = toFunction(values[key])
     return functions
-  }, {})
+  }, {} as ReplacementValues)
 }
 
-const generateFilter = (
-  options
-): {
+function generateFilter(options: ReplaceOptions): {
   include: RegExp
-  exclude: RegExp
-} => {
+  exclude: RegExp | null
+} {
   let include = /.*/
   let exclude = null
   let hasValidInclude = false
@@ -35,7 +41,8 @@ const generateFilter = (
   if (options.include) {
     if (Object.prototype.toString.call(options.include) !== '[object RegExp]') {
       throw new TypeError(`include option must be a RegExp object`)
-    } else {
+    }
+    else {
       hasValidInclude = true
       include = options.include
     }
@@ -44,7 +51,8 @@ const generateFilter = (
   if (options.exclude) {
     if (Object.prototype.toString.call(options.exclude) !== '[object RegExp]') {
       throw new TypeError(`exclude option must be a RegExp object`)
-    } else if (!hasValidInclude) {
+    }
+    else if (!hasValidInclude) {
       // Only if `options.include` not set, take `options.exclude`
       exclude = options.exclude
     }
@@ -53,16 +61,12 @@ const generateFilter = (
   return { include, exclude }
 }
 
-const replaceCode = (
-  code: string,
-  id: string,
-  pattern: RegExp,
-  functionValues: any
-) => {
+function replaceCode(code: string, id: string, pattern: RegExp, functionValues: ReplacementValues): string {
   const magicString = new MagicString(code)
 
-  let match
+  let match: RegExpExecArray | null
 
+  // eslint-disable-next-line no-cond-assign
   while ((match = pattern.exec(code))) {
     const start = match.index
     const end = start + match[0].length
@@ -73,7 +77,7 @@ const replaceCode = (
   return magicString.toString()
 }
 
-export default (options = {} as any): Plugin => {
+export default (options: ReplaceOptions = {} as any): Plugin => {
   const { include, exclude } = generateFilter(options)
 
   const fns = mapToFunctions(options)
@@ -83,15 +87,16 @@ export default (options = {} as any): Plugin => {
   const { delimiters } = options
   const pattern = delimiters
     ? new RegExp(
-        `${escape(delimiters[0])}(${keys.join('|')})${escape(delimiters[1])}`,
-        'g'
-      )
+      `${escape(delimiters[0])}(${keys.join('|')})${escape(delimiters[1])}`,
+      'g',
+    )
     : new RegExp(`\\b(${keys.join('|')})\\b`, 'g')
   return {
     name: 'replace',
     setup(build) {
       build.onLoad({ filter: include }, async (args) => {
-        if (exclude && args.path.match(exclude)) return
+        if (exclude && args.path.match(exclude))
+          return
 
         const code = await fs.promises.readFile(args.path, 'utf8')
 
@@ -101,6 +106,6 @@ export default (options = {} as any): Plugin => {
 
         return { contents, loader: args.path.match(/tsx?$/) ? 'ts' : 'js' }
       })
-    }
+    },
   }
 }

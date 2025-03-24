@@ -7,8 +7,8 @@ module.exports = {
     [
       '@semantic-release/changelog',
       {
-        changelogFile: 'docs/CHANGELOG.md'
-      }
+        changelogFile: 'docs/CHANGELOG.md',
+      },
     ],
     '@semantic-release/npm',
     [
@@ -17,18 +17,18 @@ module.exports = {
         assets: [
           {
             path: 'highwayhash-wasm/dist.tar.gz',
-            label: 'dist'
-          }
-        ]
-      }
+            label: 'dist',
+          },
+        ],
+      },
     ],
     [
       '@semantic-release/git',
       {
         assets: ['docs/CHANGELOG.md', 'dist/**/*.{js,ts}', 'package.json'],
         message:
-          'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
-      }
-    ]
-  ]
+          'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+      },
+    ],
+  ],
 }

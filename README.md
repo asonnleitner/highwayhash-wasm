@@ -7,7 +7,7 @@
 [![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
 [![License][license-src]][npm-href]
 
-> JS bindings for browser and Node.js environment of the Rust implementation of HighwayHash, Google's fast, keyed, portable 
+> JS bindings for browser and Node.js environment of the Rust implementation of HighwayHash, Google's fast, keyed, portable
 > (output is hardware independent) and secure hash function.
 
 ## Features
@@ -42,7 +42,7 @@ Use this method to generate hashes is the length of the data is not known in adv
 ```javascript
 // import the library using esm or cjs syntax
 import { useHighwayHash } from 'highwayhash-wasm'
-const { useHighwayHash } = require('highwayhash-wasm')
+// const { useHighwayHash } = require('highwayhash-wasm')
 
 // Some 32 byte key
 const key = new Uint8Array(32).fill(8)
@@ -53,7 +53,7 @@ const data = Uint8Array.from([0])
 const highway = await useHighwayHash({
   // Optional: pass a key and keep it hidden from attackers to ensure
   // unpredictability, and attackers can't mount a DoS attack
-  key: key,
+  key,
   // Optional: use SIMD for faster encryption, enabled by default
   simd: true
 })
@@ -74,7 +74,6 @@ console.log(h2) // 4652207699671410156
 // 3. method - hash the data with separate key and data
 const h3 = highway.hasher.hash64(key, data).toString()
 console.log(h3) // 4652207699671410156
-
 ```
 
 ## API
@@ -129,8 +128,6 @@ const hash = hasher.hash64(key, data).toUint32Array()
 const hash = hasher.hash64(key, data).toBigUint64Array()
 // BigUint64Array(1) [4652207699671410156n]
 ```
-
-
 
 <!-- badges -->
 [npm-version-src]: https://badgen.net/npm/v/highwayhash-wasm

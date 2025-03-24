@@ -4,26 +4,26 @@
     "files": true
   },
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "CommonJS",
-    "importHelpers": true,
-    "moduleResolution": "Node",
-    "skipLibCheck": true,
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "declaration": true,
     "composite": true,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
+    "target": "ESNext",
+    "jsx": "preserve",
     "lib": [
       "ESNext",
       "DOM",
       "DOM.Iterable",
       "ScriptHost"
-    ]
+    ],
+    "baseUrl": ".",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "strict": true,
+    "declaration": true,
+    "importHelpers": true,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
   },
   "include": [
     "**/*",

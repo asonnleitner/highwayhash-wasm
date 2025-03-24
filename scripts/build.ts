@@ -1,26 +1,26 @@
-// @ts-nocheck
+import { resolve } from 'node:path'
+import process from 'node:process'
 import esbuild from 'esbuild'
-import wasmLoader from './wasm-loader'
-import replace from './esbuild-replace'
-import { resolve } from 'path'
 import minimist from 'minimist'
+import pkg from '../package.json'
+import replace from './esbuild-replace'
+import wasmLoader from './wasm-loader'
 
 const args = minimist(process.argv.slice(2))
 const target = args._[0] || 'highwayhash-wasm'
 const format = args.f || args.format || 'global'
-import pkg from '../package.json'
 
 console.log(`Building ${target}.${format}.js...`)
 
 const outputFormat = format.startsWith('global')
   ? 'iife'
   : format === 'cjs'
-  ? 'cjs'
-  : 'esm'
+    ? 'cjs'
+    : 'esm'
 
 const outfile = resolve(__dirname, `../dist/${target}.${format}.js`)
 
-const build = async () => {
+async function build() {
   await esbuild.build({
     entryPoints: [resolve(__dirname, '../js/highwayhash-wasm/src/index.ts')],
     outfile,
@@ -33,14 +33,14 @@ const build = async () => {
     plugins: [
       wasmLoader(),
       replace({
-        'import.meta.url': 'input'
-      })
+        'import.meta.url': 'input',
+      }),
     ],
     define: {
       __VERSION__: `"${pkg.version}"`,
       __BROWSER__: String(format !== 'cjs'),
-      __NODE_JS__: String(format === 'cjs')
-    }
+      __NODE_JS__: String(format === 'cjs'),
+    },
   })
 }
 

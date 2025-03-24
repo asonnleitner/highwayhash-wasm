@@ -1,32 +1,32 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "outDir": "dist",
-    "importHelpers": true,
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "useDefineForClassFields": false,
-    "allowJs": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "removeComments": false,
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
-    "types": ["jest", "puppeteer", "node"],
-    "declaration": true,
+    "useDefineForClassFields": false,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "paths": {
+      "highwayhash-wasm": ["js/highwayhash-wasm/src"]
+    },
+    "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types"
     ],
-    "rootDir": ".",
-    "paths": {
-      "highwayhash-wasm": ["js/highwayhash-wasm/src"]
-    }
+    "allowJs": true,
+    "importHelpers": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "removeComments": false,
+    "esModuleInterop": true,
+    "types": ["jest", "puppeteer", "node"],
+    "declaration": true
   },
   "include": [
     "js/**/*.ts",

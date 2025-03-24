@@ -1,7 +1,7 @@
 [package]
 name = "highwayhash"
 version = "0.1.0"
-authors = ["asonnleitner <andreassonnleitner@gmail.com>"]
+authors = [ "asonnleitner <andreassonnleitner@gmail.com>" ]
 description = "A wasm game of life implementation"
 repository = "https://github.com/asonnleitner/highwayhash-wasm"
 license = "MIT"
@@ -9,12 +9,15 @@ edition = "2021"
 
 [lib]
 crate-type = [
-    "cdylib",
-    "rlib"
+  "cdylib",
+  "rlib"
 ]
 
 [features]
-default = ["console_error_panic_hook", "wee_alloc"]
+default = [
+  "console_error_panic_hook",
+  "wee_alloc"
+]
 
 [dependencies]
 wasm-bindgen = "0.2.63"
@@ -33,10 +36,8 @@ console_error_panic_hook = { version = "0.1.6", optional = true }
 wee_alloc = { version = "0.4.5", optional = true }
 
 # using the js-sys crate to import the Math.random JavaScript function.
-#js-sys = "0.3.56"
-
-web-sys = { version = "0.3.56", features = ["console"] }
-
+# js-sys = "0.3.56"
+web-sys = { version = "0.3.56", features = [ "console" ] }
 highway = { version = "0.7.0", default-features = false }
 
 [dev-dependencies]
@@ -45,5 +46,5 @@ wasm-bindgen-test = "0.3.29"
 [profile.release]
 # Tell `rustc` to optimize for small code size.
 opt-level = "s"
-#opt-level = "z"
+# opt-level = "z"
 lto = true
