@@ -1,3 +1,10 @@
+## [1.2.7](https://github.com/asonnleitner/highwayhash-wasm/compare/v1.2.6...v1.2.7) (2025-03-24)
+
+
+### Bug Fixes
+
+* update ESLint configuration to ignore README.md and fix import syntax in README.md ([7a000fc](https://github.com/asonnleitner/highwayhash-wasm/commit/7a000fcab2a5a43fa66c08acb51f67f5aedab0ad))
+
 ## [1.2.6](https://github.com/asonnleitner/highwayhash-wasm/compare/v1.2.5...v1.2.6) (2022-03-01)
 
 
