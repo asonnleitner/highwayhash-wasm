@@ -7,5 +7,6 @@ export default antfu({
   ignores: [
     'js/highwayhash-wasm/lib/**',
     'release.config.js',
+    'README.md',
   ],
 })

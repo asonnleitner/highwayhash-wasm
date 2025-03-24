@@ -42,7 +42,7 @@ Use this method to generate hashes is the length of the data is not known in adv
 ```javascript
 // import the library using esm or cjs syntax
 import { useHighwayHash } from 'highwayhash-wasm'
-// const { useHighwayHash } = require('highwayhash-wasm')
+const { useHighwayHash } = require('highwayhash-wasm')
 
 // Some 32 byte key
 const key = new Uint8Array(32).fill(8)
@@ -128,7 +128,6 @@ const hash = hasher.hash64(key, data).toUint32Array()
 const hash = hasher.hash64(key, data).toBigUint64Array()
 // BigUint64Array(1) [4652207699671410156n]
 ```
-
 <!-- badges -->
 [npm-version-src]: https://badgen.net/npm/v/highwayhash-wasm
 [npm-href]: https://www.npmjs.com/package/highwayhash-wasm
