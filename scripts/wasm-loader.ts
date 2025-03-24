@@ -6,7 +6,7 @@ interface WasmLoaderOptions {
   name: string
 }
 
-function wasmLoader(options?: WasmLoaderOptions): Plugin {
+function wasmLoader(_options?: WasmLoaderOptions): Plugin {
   return {
     name: 'wasm-loader',
 

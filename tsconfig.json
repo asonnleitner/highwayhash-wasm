@@ -16,17 +16,17 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "types": ["node"],
     "allowJs": true,
-    "importHelpers": true,
-    "outDir": "dist",
-    "sourceMap": true,
-    "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
+    "declaration": true,
+    "importHelpers": true,
+    "outDir": "dist",
     "removeComments": false,
+    "sourceMap": true,
     "esModuleInterop": true,
-    "types": ["jest", "puppeteer", "node"],
-    "declaration": true
+    "skipLibCheck": true
   },
   "include": [
     "js/**/*.ts",

@@ -18,7 +18,7 @@ function hexToUint8(hex: string): Uint8Array {
 }
 
 function stringToUint8(s: string): Uint8Array {
-  return _UInt8ArrayFrom(s, (v, k) => v.charCodeAt(0))
+  return _UInt8ArrayFrom(s, v => v.charCodeAt(0))
 }
 
 function isHex(hex: string): boolean {
